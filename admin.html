@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <ul class="sidebar">
+            <li data-target="settings" class="active">Theme & Settings</li>
+            <li data-target="content">Site Content</li>
+            <li data-target="products">Product Manager</li>
+            <li id="logout" style="color: red; margin-top: 2rem;">Logout</li>
+        </ul>
+
+        <!-- Content -->
+        <main>
+            <!-- Tab 1: Theme Settings -->
+            <div id="settings" class="tab-content">
+                <h2 style="margin-bottom: 1.5rem;">Global Configuration</h2>
+                <div class="admin-card">
+                    <div style="margin-bottom: 1rem;">
+                        <label>Store Name (Global)</label>
+                        <input type="text" id="conf-name" class="form-input">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <label>Visual Theme</label>
+                        <select id="conf-theme" class="form-input">
+                            <option value="light">Cashbox White (Default)</option>
+                            <option value="dark">Luxury Dark</option>
+                        </select>
+                    </div>
+                    <button id="save-theme-config" class="btn btn-solid">Save Theme Settings</button>
+                </div>
+            </div>
+
+            <!-- Tab 2: Site Content (Hero, Slider, Promo) -->
+            <div id="content" class="tab-content hidden">
+                <h2 style="margin-bottom: 1.5rem;">Content Management</h2>
+                
+                <!-- Hero Text -->
+                <div class="admin-card">
+                    <h3>Hero Section</h3>
+                    <label>Main Title</label>
+                    <input type="text" id="conf-hero-title" class="form-input">
+                    <label>Subtitle / Tagline</label>
+                    <input type="text" id="conf-hero-sub" class="form-input">
+                </div>
+
+                <!-- Slider -->
+                <div class="admin-card">
+                    <h3>Hero Slider (3 Slides)</h3>
+                    
+                    <p style="font-weight: bold; margin-top: 1rem;">Slide 1</p>
+                    <input type="text" id="slide1-img" class="form-input" placeholder="Image URL (assets/images/...)">
+                    <input type="text" id="slide1-title" class="form-input" placeholder="Headline">
+                    <input type="text" id="slide1-desc" class="form-input" placeholder="Subtext">
+                    
+                    <p style="font-weight: bold; margin-top: 1rem;">Slide 2</p>
+                    <input type="text" id="slide2-img" class="form-input" placeholder="Image URL">
+                    <input type="text" id="slide2-title" class="form-input" placeholder="Headline">
+                    <input type="text" id="slide2-desc" class="form-input" placeholder="Subtext">
+
+                    <p style="font-weight: bold; margin-top: 1rem;">Slide 3</p>
+                    <input type="text" id="slide3-img" class="form-input" placeholder="Image URL">
+                    <input type="text" id="slide3-title" class="form-input" placeholder="Headline">
+                    <input type="text" id="slide3-desc" class="form-input" placeholder="Subtext">
+                </div>
+
+                <!-- Promo Section -->
+                <div class="admin-card">
+                    <h3>Promo Section</h3>
+                    <label><input type="checkbox" id="promo-enabled"> Enable Promo Section</label>
+                    <div style="margin-top: 1rem;">
+                        <label>Title</label>
+                        <input type="text" id="promo-title" class="form-input">
+                        <label>Description</label>
+                        <textarea id="promo-desc" class="form-input" rows="3"></textarea>
+                        <label>Image URL</label>
+                        <input type="text" id="promo-img" class="form-input">
+                    </div>
+                </div>
+
+                <button id="save-content-config" class="btn btn-solid" style="margin-top: 1rem;">Save Content Settings</button>
+            </div>
+
+            <!-- Tab 3: Products -->
+            <div id="products" class="tab-content hidden">
+                <h2 style="margin-bottom: 1.5rem;">Inventory</h2>
+                <form id="add-product-form" class="admin-card">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <input type="text" id="prod-name" placeholder="Name" class="form-input" required>
+                        <input type="number" id="prod-price" placeholder="Price" class="form-input" required>
+                        <input type="file" id="prod-file" class="form-input" required>
+                    </div>
+                    <button class="btn btn-solid" style="margin-top: 1rem;">Add Product</button>
+                </form>
+                
+                <table style="width: 100%; text-align: left; margin-top: 1rem;">
+                    <thead><tr><th>Img</th><th>Name</th><th>Price</th><th>Action</th></tr></thead>
+                    <tbody id="prod-table"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+        // Inline init for Admin Page
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAdminAccess();
+        });
+    </script>
+</body>
+</html>
