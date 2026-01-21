@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <div id="admin-badge" class="admin-badge hidden">
+        <a href="admin.html">Admin Panel</a>
+    </div>
+
+    <nav class="container" style="padding: 1rem 2rem;">
+        <a href="index.html" class="btn">Back to Store</a>
+    </nav>
+    
+    <div class="form-wrap">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Account Login</h2>
+        <form id="login-form">
+            <input type="email" id="email" class="form-input" placeholder="Email Address" required>
+            <input type="password" id="pass" class="form-input" placeholder="Password" required>
+            <button class="btn btn-solid" style="width: 100%;">Sign In</button>
+        </form>
+        <p id="login-error" style="color: red; text-align: center; margin-top: 1rem; display: none;">Invalid Credentials</p>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const u = document.getElementById('email').value;
+            const p = document.getElementById('pass').value;
+            
+            // Call the login function from main.js logic
+            handleLogin(u, p);
+        });
+    </script>
+</body>
+</html>
